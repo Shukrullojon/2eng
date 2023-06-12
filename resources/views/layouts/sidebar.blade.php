@@ -47,7 +47,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="{{ route('listeningRepeatIndex') }}" class="nav-link {{ Request::is('listening_repeat*') ? "active":'' }}">
+            <a href="{{ route('listeningRepeatIndex') }}" class="nav-link {{ Request::is('listen_repeat*') ? "active":'' }}">
                 <i class="fas fa-calendar-day"></i>
                 <p>Listening Repeat</p>
             </a>

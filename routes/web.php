@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/delete/{id}', 'ListeningController@delete')->name('listeningDelete');
     });
     // Listening Repeat
-    Route::group(['prefix' => 'listening_repeat', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+    Route::group(['prefix' => 'listen_repeat', 'namespace' => '\App\Http\Controllers\Admin'], function () {
         Route::get('/', 'ListeningRepeatController@index')->name('listeningRepeatIndex');
         Route::get('/create', 'ListeningRepeatController@create')->name('listeningRepeatCreate');
         Route::post('/store', 'ListeningRepeatController@store')->name('listeningRepeatStore');

@@ -15,6 +15,7 @@ class CreateVocabulariesTable extends Migration
     {
         Schema::create('vocabularies', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('day_id');
             $table->string('word');
             $table->string('translate');
             $table->string('info');
