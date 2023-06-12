@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'UCOIN',
+    'site_title' => '2ENG',
 ];

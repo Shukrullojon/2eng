@@ -8,7 +8,10 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/', [App\Http\Controllers\Blade\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\Blade\HomeController::class,'index'])->name('home');
 
-
+    //Route::resource('day', \App\Http\Controllers\Admin\DayController::class);
+    Route::group(['prefix'=>'day', 'namespace'=>'\App\Http\Controllers\Admin'], function(){
+        Route::get('/', 'DayController@index')->name('dayIndex');
+    });
     // User
     Route::group(['prefix'=>'user', 'namespace'=>'\App\Http\Controllers\Blade'], function(){
         Route::get('/', 'UserController@index')->name('userIndex');
