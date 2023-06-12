@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Grammer extends Model
 {
     use HasFactory;
+
+    protected $table = 'grammers';
+
+    protected $guarded = [];
+
+    public function day(){
+        return $this->belongsTo(Day::class);
+    }
 }
