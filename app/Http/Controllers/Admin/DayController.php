@@ -15,7 +15,7 @@ class DayController extends Controller
      */
     public function index()
     {
-        $days = Day::latest()->paginate(20);
+        $days = Day::orderBy('id','DESC')->paginate(20);
         return view('admin.day.index', [
             'days' => $days
         ]);
@@ -43,7 +43,7 @@ class DayController extends Controller
             'name' => 'required',
         ]);
         Day::create($request->post());
-        return redirect()->route('day.index')->with('success', 'Day has been created successfully.');
+        return redirect()->route('dayIndex')->with('success', 'Day has been created successfully.');
     }
 
     /**
@@ -52,8 +52,9 @@ class DayController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Day $day)
+    public function show($id)
     {
+        $day = Day::find($id);
         return view('admin.day.show', [
             'day' => $day,
         ]);
@@ -65,8 +66,9 @@ class DayController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Day $day)
+    public function edit($id)
     {
+        $day = Day::find($id);
         return view('admin.day.edit', ['day' => $day]);
     }
 
@@ -77,13 +79,14 @@ class DayController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Day $day)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'required',
         ]);
+        $day = Day::find($id);
         $day->fill($request->post())->save();
-        return redirect()->route('day.index')->with('success','Day Has Been updated successfully');
+        return redirect()->route('dayIndex')->with('success','Day Has Been updated successfully');
     }
 
     /**
@@ -92,9 +95,9 @@ class DayController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Day $day)
+    public function delete($id)
     {
-        $day->delete();
-        return redirect()->route('day.index')->with('success','Day has been deleted successfully');
+        Day::where('id',$id)->delete();
+        return redirect()->route('dayIndex')->with('success','Day has been deleted successfully');
     }
 }

@@ -11,6 +11,12 @@ Route::group(['middleware' => 'auth'],function (){
     //Route::resource('day', \App\Http\Controllers\Admin\DayController::class);
     Route::group(['prefix'=>'day', 'namespace'=>'\App\Http\Controllers\Admin'], function(){
         Route::get('/', 'DayController@index')->name('dayIndex');
+        Route::get('/create', 'DayController@create')->name('dayCreate');
+        Route::post('/store', 'DayController@store')->name('dayStore');
+        Route::get('/show/{id}','DayController@show')->name('dayShow');
+        Route::get('/edit/{id}','DayController@edit')->name('dayEdit');
+        Route::post('/update/{id}','DayController@update')->name('dayUpdate');
+        Route::delete('/delete/{id}','DayController@delete')->name('dayDelete');
     });
     // User
     Route::group(['prefix'=>'user', 'namespace'=>'\App\Http\Controllers\Blade'], function(){
