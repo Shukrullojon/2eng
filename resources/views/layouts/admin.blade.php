@@ -31,7 +31,14 @@
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
 	<!-- SweetAlert2 -->
 	<link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-	<link rel="icon" href="/consImages/logoU.png ">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css')}}">
+    <!-- CodeMirror -->
+    {{--<link rel="stylesheet" href="{{ asset('plugins/codemirror/codemirror.css')}}">
+    <link rel="stylesheet" href="{{ asset('plugins/codemirror/theme/monokai.css')}}">--}}
+    <!-- SimpleMDE -->
+    {{--<link rel="stylesheet" href="{{ asset('plugins/simplemde/simplemde.min.css')}}">--}}
+    <link rel="icon" href="/consImages/logoU.png ">
 </head>
 
 <body class="{{ auth()->user()->theme()['body'] ?? '' }} hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
@@ -159,9 +166,30 @@
 <script src="{{asset('plugins/sweetalert2-theme-bootstrap-4/sweet-alerts.min.js') }}"></script>
 <!-- MyJs -->
 <script src="{{asset('plugins/bootstrap_my/myScripts.js')}}" type="text/javascript"></script>
-
+<!-- Summernote -->
+<script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+{{--<script src="{{ asset('plugins/plugins/codemirror/codemirror.js')}}"></script>
+<script src="{{ asset('plugins/plugins/codemirror/mode/css/css.js')}}"></script>
+<script src="{{ asset('plugins/plugins/codemirror/mode/xml/xml.js')}}"></script>
+<script src="{{ asset('plugins/plugins/codemirror/mode/htmlmixed/htmlmixed.js')}}"></script>--}}
 <script>
+    $(function () {
+        // Summernote
+        $('#summernote').summernote()
+    })
+    $(function () {
+        // Summernote
+        $('#summernote1').summernote()
+    })
+    $(function () {
+        // Summernote
+        $('#summernote2').summernote()
+    })
+    $(function () {
+        // Summernote
+        $('#summernote3').summernote()
+    })
     $.widget.bridge('uibutton', $.ui.button)
 
     //Clear form filters

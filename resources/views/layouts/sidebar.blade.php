@@ -18,6 +18,48 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="{{ route('grammerIndex') }}" class="nav-link {{ Request::is('grammer*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Grammer</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('vocabularyIndex') }}" class="nav-link {{ Request::is('vocabulary*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Vocabulary</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('blogIndex') }}" class="nav-link {{ Request::is('blog*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Blogs</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('listeningIndex') }}" class="nav-link {{ Request::is('listening*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Listening</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('listeningRepeatIndex') }}" class="nav-link {{ Request::is('listening_repeat*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Listening Repeat</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{{ route('speakingIndex') }}" class="nav-link {{ Request::is('speaking*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Speaking</p>
+            </a>
+        </li>
+
         <li class="nav-item has-treeview">
             <a href="#"
                class="nav-link {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*')) ? 'active':''}}">
