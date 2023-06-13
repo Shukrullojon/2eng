@@ -1,14 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ApiAuthController;
-use App\Http\Controllers\Blade\ApiUserController;
-use App\Http\Controllers\Pages\BrandController;
+Route::group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::post('/register', 'AuthController@register');
+    Route::post('/login', 'AuthController@login');
+});
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-*/
-Route::middleware('apicheck')->post('/v1/gw','\App\Http\Controllers\Api\V1\MainController@index');

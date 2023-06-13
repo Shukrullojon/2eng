@@ -55,7 +55,12 @@
                                         <td>{{ $key+1 }}</td>
                                         <td>@if(!empty($grammer->day)) {{ $grammer->day->name }} @endif</td>
                                         <td>{!!  $grammer->text !!}</td>
-                                        <td>{!!  $grammer->video !!}</td>
+                                        <td>
+                                            @if(!empty($grammer->video))
+                                                <video  src="{{ asset($grammer->video) }}" width="150" height="150" controls>
+                                                </video>
+                                            @endif
+                                        </td>
                                         <td>
                                             <form action="{{ route("grammerDelete", $grammer->id) }}" method="post">
                                                 @csrf
