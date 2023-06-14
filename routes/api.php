@@ -6,7 +6,7 @@ Route::group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers\Api'], f
 });
 
 Route::group(['prefix' => 'day', 'namespace' => '\App\Http\Controllers\Api'], function () {
-    Route::post('/get', 'DayController@get');
+    Route::get('/get', 'DayController@get');
 });
 
 Route::group(['prefix' => 'module', 'namespace' => '\App\Http\Controllers\Api'], function () {

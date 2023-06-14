@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ModuleController extends Controller
 {
     public function get(Request $request){
-        $modules = Module::select('name','image','info')->get();
+        $modules = Module::select('id','name','image','info')->get();
         return response()->json([
             'status' => true,
             'result' => [

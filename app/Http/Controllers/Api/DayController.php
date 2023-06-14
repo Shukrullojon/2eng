@@ -23,8 +23,8 @@ class DayController extends Controller
                 'error' => $validator->errors()
             ], 400);
 
-        $days = Day::select('days.name as name','results.is_done as is_done')
-            ->leftJoin('results','days.id','=','results.day_id')
+        $days = Day::select('name','module_id')
+            ->where('module_id',$request->module_id)
             ->get();
         return response()->json([
             'status' => true,
