@@ -9,3 +9,6 @@ Route::group(['prefix' => 'day', 'namespace' => '\App\Http\Controllers\Api'], fu
     Route::post('/get', 'DayController@get');
 });
 
+Route::group(['prefix' => 'module', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'ModuleController@get');
+});
