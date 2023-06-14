@@ -1,27 +1,31 @@
-
 @extends('layouts.admin')
 @section('content')
-
     <br>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            Day Show
-                            <a href="" class="btn btn-sm btn-outline-info float-right">Редактировать</a>
-                        </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>Module</th>
-                                    <th>@if($day->module){{ $day->module->name }}@endif</th>
+                                    <th>Name</th>
+                                    <td>{{ $module->name }}</td>
                                 </tr>
 
                                 <tr>
-                                    <th>Name</th>
-                                    <th>{{ $day->name }}</th>
+                                    <th>Info</th>
+                                    <td>{!! $module->info !!}</td>
+                                </tr>
+
+
+                                <tr>
+                                    <th>Image</th>
+                                    <td>
+                                        @if(!empty($module->image))
+                                            <img src="{{ $module->image }}" alt="" width="100" height="200">
+                                        @endif
+                                    </td>
                                 </tr>
                             </table>
                             <br>

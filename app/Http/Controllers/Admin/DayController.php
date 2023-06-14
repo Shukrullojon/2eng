@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Day;
+use App\Models\Module;
 use Illuminate\Http\Request;
 
 class DayController extends Controller
@@ -28,7 +29,10 @@ class DayController extends Controller
      */
     public function create()
     {
-        return view('admin.day.create');
+        $modules = Module::latest()->get();
+        return view('admin.day.create',[
+            'modules' => $modules,
+        ]);
     }
 
     /**
@@ -41,6 +45,7 @@ class DayController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'module_id' => 'required',
         ]);
         Day::create($request->post());
         return redirect()->route('dayIndex')->with('success', 'Day has been created successfully.');
@@ -69,7 +74,11 @@ class DayController extends Controller
     public function edit($id)
     {
         $day = Day::find($id);
-        return view('admin.day.edit', ['day' => $day]);
+        $modules = Module::latest()->get();
+        return view('admin.day.edit', [
+            'day' => $day,
+            'modules' => $modules,
+        ]);
     }
 
     /**

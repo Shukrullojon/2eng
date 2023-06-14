@@ -35,6 +35,22 @@
                             @csrf
 
                             <div class="form-group">
+                                <label>Module</label>
+                                <label for="*" style="color:red">*</label>
+                                <select name="module_id" id="module_id"
+                                        class="form-control select2" {{ $errors->has('module_id') ? "is-invalid":"" }}
+                                ">
+                                @foreach($modules as $module)
+                                    <option value="{{ $module->id }}">{{ $module->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @if($errors->has('module_id'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('module_id') }}</span>
+                                    @endif
+                            </div>
+
+                            <div class="form-group">
                                 <label>Name</label>
                                 <label for="*" style="color:red">*</label>
                                 <input type="text" name="name" value="{{ old('name') }}"

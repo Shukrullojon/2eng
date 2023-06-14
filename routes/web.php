@@ -9,15 +9,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [App\Http\Controllers\Blade\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\Blade\HomeController::class, 'index'])->name('home');
 
-    // Blog
-    Route::group(['prefix' => 'blog', 'namespace' => '\App\Http\Controllers\Admin'], function () {
-        Route::get('/', 'BlogController@index')->name('blogIndex');
-        Route::get('/create', 'BlogController@create')->name('blogCreate');
-        Route::post('/store', 'BlogController@store')->name('blogStore');
-        Route::get('/show/{id}', 'BlogController@show')->name('blogShow');
-        Route::get('/edit/{id}', 'BlogController@edit')->name('blogEdit');
-        Route::post('/update/{id}', 'BlogController@update')->name('blogUpdate');
-        Route::delete('/delete/{id}', 'BlogController@delete')->name('blogDelete');
+
+    // Module
+    Route::group(['prefix' => 'module', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+        Route::get('/', 'ModuleController@index')->name('moduleIndex');
+        Route::get('/create', 'ModuleController@create')->name('moduleCreate');
+        Route::post('/store', 'ModuleController@store')->name('moduleStore');
+        Route::get('/show/{id}', 'ModuleController@show')->name('moduleShow');
+        Route::get('/edit/{id}', 'ModuleController@edit')->name('moduleEdit');
+        Route::post('/update/{id}', 'ModuleController@update')->name('moduleUpdate');
+        Route::delete('/delete/{id}', 'ModuleController@delete')->name('moduleDelete');
     });
     // Day
     Route::group(['prefix' => 'day', 'namespace' => '\App\Http\Controllers\Admin'], function () {
@@ -38,6 +39,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'GrammerController@edit')->name('grammerEdit');
         Route::post('/update/{id}', 'GrammerController@update')->name('grammerUpdate');
         Route::delete('/delete/{id}', 'GrammerController@delete')->name('grammerDelete');
+    });
+    // Blog
+    Route::group(['prefix' => 'blog', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+        Route::get('/', 'BlogController@index')->name('blogIndex');
+        Route::get('/create', 'BlogController@create')->name('blogCreate');
+        Route::post('/store', 'BlogController@store')->name('blogStore');
+        Route::get('/show/{id}', 'BlogController@show')->name('blogShow');
+        Route::get('/edit/{id}', 'BlogController@edit')->name('blogEdit');
+        Route::post('/update/{id}', 'BlogController@update')->name('blogUpdate');
+        Route::delete('/delete/{id}', 'BlogController@delete')->name('blogDelete');
     });
     // Listening
     Route::group(['prefix' => 'listening', 'namespace' => '\App\Http\Controllers\Admin'], function () {

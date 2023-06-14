@@ -32,6 +32,23 @@
 
                         <form action="{{ route('dayUpdate',$day->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
+
+                            <div class="form-group">
+                                <label>Module</label>
+                                <label for="*" style="color:red">*</label>
+                                <select name="module_id" id="module_id"
+                                        class="form-control select2" {{ $errors->has('module_id') ? "is-invalid":"" }}
+                                ">
+                                @foreach($modules as $module)
+                                    <option value="{{ $module->id }}" @if($module->id == $day->module_id) selected @endif>{{ $module->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @if($errors->has('module_id'))
+                                        <span
+                                            class="error invalid-feedback">{{ $errors->first('module_id') }}</span>
+                                    @endif
+                            </div>
+
                             <div class="form-group">
                                 <label>Name</label>
                                 <label for="*" style="color:red">*</label>

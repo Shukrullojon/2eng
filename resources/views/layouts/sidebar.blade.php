@@ -12,6 +12,13 @@
         </li>
 
         <li class="nav-item">
+            <a href="{{ route('moduleIndex') }}" class="nav-link {{ Request::is('module*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Modules</p>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a href="{{ route('dayIndex') }}" class="nav-link {{ Request::is('day*') ? "active":'' }}">
                 <i class="fas fa-calendar-day"></i>
                 <p>Days</p>
