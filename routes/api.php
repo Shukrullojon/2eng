@@ -12,3 +12,7 @@ Route::group(['prefix' => 'day', 'namespace' => '\App\Http\Controllers\Api'], fu
 Route::group(['prefix' => 'module', 'namespace' => '\App\Http\Controllers\Api'], function () {
     Route::get('/get', 'ModuleController@get');
 });
+
+Route::group(['prefix' => 'teacher', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'TeacherController@get');
+});

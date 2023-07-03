@@ -123,6 +123,18 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/update/{id}', 'RoleController@update')->name('roleUpdate');
         Route::delete('/delete/{id}', 'RoleController@destroy')->name('roleDestroy');
     });
+
+    // teachers
+    Route::group(['prefix' => 'teacher', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+        Route::get('/', 'TeacherController@index')->name('teacherIndex');
+        Route::get('/create', 'TeacherController@create')->name('teacherCreate');
+        Route::post('/store', 'TeacherController@store')->name('teacherStore');
+        Route::get('/show/{id}', 'TeacherController@show')->name('teacherShow');
+        Route::get('/edit/{id}', 'TeacherController@edit')->name('teacherEdit');
+        Route::post('/update/{id}', 'TeacherController@update')->name('teacherUpdate');
+        Route::delete('/delete/{id}', 'TeacherController@delete')->name('teacherDelete');
+    });
+
 });
 
 // Change language session condition
