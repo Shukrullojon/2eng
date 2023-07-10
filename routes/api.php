@@ -16,3 +16,7 @@ Route::group(['prefix' => 'module', 'namespace' => '\App\Http\Controllers\Api'],
 Route::group(['prefix' => 'teacher', 'namespace' => '\App\Http\Controllers\Api'], function () {
     Route::get('/get', 'TeacherController@get');
 });
+
+Route::group(['prefix' => 'info', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'InfoController@get');
+});

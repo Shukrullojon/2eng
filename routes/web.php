@@ -92,7 +92,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
 
-
     // User
     Route::group(['prefix' => 'user', 'namespace' => '\App\Http\Controllers\Blade'], function () {
         Route::get('/', 'UserController@index')->name('userIndex');
@@ -133,6 +132,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'TeacherController@edit')->name('teacherEdit');
         Route::post('/update/{id}', 'TeacherController@update')->name('teacherUpdate');
         Route::delete('/delete/{id}', 'TeacherController@delete')->name('teacherDelete');
+    });
+    // infos
+    Route::group(['prefix' => 'info', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+        Route::get('/', 'InfoController@index')->name('infoIndex');
+        Route::get('/create', 'InfoController@create')->name('infoCreate');
+        Route::post('/store', 'InfoController@store')->name('infoStore');
+        Route::get('/show/{id}', 'InfoController@show')->name('infoShow');
+        Route::get('/edit/{id}', 'InfoController@edit')->name('infoEdit');
+        Route::post('/update/{id}', 'InfoController@update')->name('infoUpdate');
+        Route::delete('/delete/{id}', 'InfoController@delete')->name('infoDelete');
     });
 
 });

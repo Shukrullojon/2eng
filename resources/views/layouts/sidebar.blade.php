@@ -74,6 +74,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a href="{{ route('infoIndex') }}" class="nav-link {{ Request::is('info*') ? "active":'' }}">
+                <i class="fas fa-calendar-day"></i>
+                <p>Info</p>
+            </a>
+        </li>
+
         <li class="nav-item has-treeview">
             <a href="#"
                class="nav-link {{ (Request::is('permission*') || Request::is('role*') || Request::is('user*')) ? 'active':''}}">
