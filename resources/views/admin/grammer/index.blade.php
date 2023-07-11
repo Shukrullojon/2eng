@@ -53,7 +53,11 @@
                                 @foreach($grammers as $key=>$grammer)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>@if(!empty($grammer->day)) {{ $grammer->day->name }} @endif</td>
+                                        <td>
+                                            @if(!empty($grammer->day))
+                                                {{ $grammer->day->module->name }},{{ $grammer->day->name }}
+                                            @endif
+                                        </td>
                                         <td>{!!  $grammer->text !!}</td>
                                         <td>
                                             @if(!empty($grammer->video))
@@ -99,6 +103,5 @@
     </section>
 @endsection
 @section('scripts')
-    <script
-    </script>
+
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Day;
 use App\Models\Grammer;
+use App\Models\Part;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,11 +70,42 @@ class GrammerController extends Controller
     public function show($id)
     {
         $grammer = Grammer::find($id);
+        $parts = Part::select()
+            ->where('day_id',$grammer->day_id)
+            ->where('model',Grammer::class)
+            ->where('model_id',$grammer->id)
+            ->get();
         return view('admin.grammer.show', [
             'grammer' => $grammer,
+            'parts' => $parts,
         ]);
     }
 
+    public function partstore(Request $request,$id){
+        $request->validate([
+            'question' => 'required',
+            'option_a' => 'required',
+            'option_b' => 'required',
+            'option_c' => 'required',
+            'option_d' => 'required',
+            'answer' => 'required',
+            'status' => 'required',
+        ]);
+        $grammer = Grammer::find($id);
+        Part::create([
+            'day_id' => $grammer->day_id,
+            'model' => Grammer::class,
+            'model_id' => $grammer->id,
+            'question' => $request->question,
+            'option_a' => $request->option_a,
+            'option_b' => $request->option_b,
+            'option_c' => $request->option_c,
+            'option_d' => $request->option_d,
+            'answer' => $request->answer,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('grammerShow',$grammer->id)->with('success', 'Test has been created successfully.');
+    }
     /**
      * Show the form for editing the specified resource.
      *

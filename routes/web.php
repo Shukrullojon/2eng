@@ -39,6 +39,13 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'GrammerController@edit')->name('grammerEdit');
         Route::post('/update/{id}', 'GrammerController@update')->name('grammerUpdate');
         Route::delete('/delete/{id}', 'GrammerController@delete')->name('grammerDelete');
+        Route::post('/partStore/{id}', 'GrammerController@partstore')->name('partStoreGrammer');
+    });
+    // Part
+    Route::group(['prefix' => 'part', 'namespace' => '\App\Http\Controllers\Admin'], function () {
+        Route::get('/edit/{id}', 'PartController@edit')->name('partEdit');
+        Route::post('/update/{id}', 'PartController@update')->name('partUpdate');
+        Route::delete('/delete/{id}', 'PartController@delete')->name('partDelete');
     });
     // Blog
     Route::group(['prefix' => 'blog', 'namespace' => '\App\Http\Controllers\Admin'], function () {

@@ -16,4 +16,19 @@ class Part extends Model
     public function day(){
         return $this->belongsTo(Day::class);
     }
+
+    public function PartResult(){
+        return $this->hasOne(PartResult::class);
+    }
+    public $answers = [
+        '1' => 'A',
+        '2' => 'A',
+        '3' => 'A',
+        '4' => 'A',
+    ];
+
+    public $st = [
+        '1' => 'Active',
+        '0' => 'No Active',
+    ];
 }
