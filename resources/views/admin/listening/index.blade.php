@@ -32,7 +32,8 @@
                             <h3 class="card-title">Create</h3>
                             <div class="card-tools">
                                 <div class="btn-group">
-                                    <a href="{{ route('listeningCreate') }}" class="btn btn-sm btn-outline-info">Listening create</a>
+                                    <a href="{{ route('listeningCreate') }}" class="btn btn-sm btn-outline-info">Listening
+                                        create</a>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,11 @@
                                 @foreach($listening as $key=>$l)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>@if(!empty($l->day)) {{ $l->day->name }} @endif</td>
+                                        <td>
+                                            @if(!empty($l->day))
+                                                {{ $l->day->module->name }},{{ $l->day->name }}
+                                            @endif
+                                        </td>
                                         <td>{!!  $l->text !!}</td>
                                         <td>{!!  $l->audio !!}</td>
                                         <td>
@@ -70,7 +75,9 @@
                                                         <span class="fa fa-edit"></span>
                                                     </a>
                                                     <input name="_method" type="hidden" value="DELETE">
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="if (confirm('Вы уверены?')) { this.form.submit() } "><span class="fa fa-trash"></span></button>
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                            onclick="if (confirm('Вы уверены?')) { this.form.submit() } ">
+                                                        <span class="fa fa-trash"></span></button>
                                                 </div>
                                             </form>
                                         </td>

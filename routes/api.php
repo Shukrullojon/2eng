@@ -31,3 +31,25 @@ Route::group(['prefix' => 'grammer', 'namespace' => '\App\Http\Controllers\Api']
     Route::get('/get', 'GrammerController@get');
     Route::post('/result', 'GrammerController@result');
 });
+// blog
+Route::group(['prefix' => 'blog', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'BlogController@get');
+});
+// Listening
+Route::group(['prefix' => 'listening', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'ListeningController@get');
+    Route::post('/result', 'ListeningController@result');
+});
+// Listening Repeat
+Route::group(['prefix' => 'listening_repeat', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'ListeningRepeatController@get');
+});
+// Speaking
+Route::group(['prefix' => 'speaking', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'SpeakingController@get');
+});
+// Vocabulary
+Route::group(['prefix' => 'vocabulary', 'namespace' => '\App\Http\Controllers\Api'], function () {
+    Route::get('/get', 'VocabularyController@get');
+    Route::post('/result', 'VocabularyController@result');
+});

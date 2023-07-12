@@ -54,7 +54,10 @@
                                 @foreach($blogs as $key=>$blog)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>@if(!empty($blog->day)) {{ $blog->day->name }} @endif</td>
+                                        <td>@if(!empty($blog->day))
+                                                {{ $blog->day->module->name }} {{ $blog->day->name }}
+                                            @endif
+                                        </td>
                                         <td>{!!  $blog->text !!}</td>
                                         <td>{!!  $blog->translate !!}</td>
                                         <td>{!!  $blog->grammer_focus !!}</td>

@@ -13,7 +13,11 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Day</th>
-                                    <td>@if(!empty($speaking->day)){{ $speaking->day->name }}@endif</td>
+                                    <td>
+                                        @if(!empty($speaking->day))
+                                            {{ $speaking->day->module->name }},{{ $speaking->day->name }}
+                                        @endif
+                                    </td>
                                 </tr>
 
                                 <tr>

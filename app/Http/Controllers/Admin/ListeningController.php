@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Day;
 use App\Models\Listening;
+use App\Models\Part;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -69,11 +70,42 @@ class ListeningController extends Controller
     public function show($id)
     {
         $listening = Listening::find($id);
+        $parts = Part::select()
+            ->where('day_id',$listening->day_id)
+            ->where('model',Listening::class)
+            ->where('model_id',$listening->id)
+            ->get();
         return view('admin.listening.show', [
             'listening' => $listening,
+            'parts' => $parts,
         ]);
     }
 
+    public function partstore(Request $request,$id){
+        $request->validate([
+            'question' => 'required',
+            'option_a' => 'required',
+            'option_b' => 'required',
+            'option_c' => 'required',
+            'option_d' => 'required',
+            'answer' => 'required',
+            'status' => 'required',
+        ]);
+        $listening = Listening::find($id);
+        Part::create([
+            'day_id' => $listening->day_id,
+            'model' => Listening::class,
+            'model_id' => $listening->id,
+            'question' => $request->question,
+            'option_a' => $request->option_a,
+            'option_b' => $request->option_b,
+            'option_c' => $request->option_c,
+            'option_d' => $request->option_d,
+            'answer' => $request->answer,
+            'status' => $request->status,
+        ]);
+        return redirect()->route('listeningShow',$listening->id)->with('success', 'Test has been created successfully.');
+    }
     /**
      * Show the form for editing the specified resource.
      *

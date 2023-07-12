@@ -41,7 +41,7 @@
                                                 class="form-control select2" {{ $errors->has('day_id') ? "is-invalid":"" }}
                                         ">
                                         @foreach($days as $day)
-                                            <option @if($day->id == $speaking->day_id) selected @endif value="{{ $day->id }}">{{ $day->name }}</option>
+                                            <option @if($day->id == $speaking->day_id) selected @endif value="{{ $day->id }}">{{ $day->module->name }} {{ $day->name }}</option>
                                             @endforeach
                                             </select>
                                             @if($errors->has('day_id'))

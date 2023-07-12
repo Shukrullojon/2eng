@@ -57,7 +57,7 @@
                                     <tr>
                                         <td>{{ $key+1 }}</td>
                                         <td>@if(!empty($vocabulary->day))
-                                                {{ $vocabulary->day->name }}
+                                                {{ $vocabulary->day->module->name }},{{ $vocabulary->day->name }}
                                             @endif</td>
                                         <td>{!!  $vocabulary->word !!}</td>
                                         <td>{!!  $vocabulary->translate !!}</td>

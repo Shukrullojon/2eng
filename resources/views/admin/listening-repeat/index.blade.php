@@ -54,7 +54,11 @@
                                 @foreach($listening as $key=>$l)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>@if(!empty($l->day)) {{ $l->day->name }} @endif</td>
+                                        <td>
+                                            @if(!empty($l->day))
+                                                {{ $l->day->module->name }},{{ $l->day->name }}
+                                            @endif
+                                        </td>
                                         <td>{!!  $l->text !!}</td>
                                         <td>{!!  $l->video !!}</td>
                                         <td>{!!  $l->audio !!}</td>

@@ -66,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'ListeningController@edit')->name('listeningEdit');
         Route::post('/update/{id}', 'ListeningController@update')->name('listeningUpdate');
         Route::delete('/delete/{id}', 'ListeningController@delete')->name('listeningDelete');
+        Route::post('/partstorelistening/{id}', 'ListeningController@partstore')->name('partStoreListening');
     });
     // Listening Repeat
     Route::group(['prefix' => 'listen_repeat', 'namespace' => '\App\Http\Controllers\Admin'], function () {
@@ -96,6 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', 'VocabularyController@edit')->name('vocabularyEdit');
         Route::post('/update/{id}', 'VocabularyController@update')->name('vocabularyUpdate');
         Route::delete('/delete/{id}', 'VocabularyController@delete')->name('vocabularyDelete');
+        Route::post('/partstorevocabulary/{id}', 'VocabularyController@partstore')->name('partStoreVocabulary');
     });
 
 

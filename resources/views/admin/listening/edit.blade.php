@@ -30,7 +30,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <form action="{{ route('listeningUpdate',$listening->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('listeningUpdate',$listening->id) }}" method="post"
+                              enctype="multipart/form-data">
                             @csrf
 
                             <div class="row">
@@ -42,7 +43,10 @@
                                                 class="form-control select2" {{ $errors->has('day_id') ? "is-invalid":"" }}
                                         ">
                                         @foreach($days as $day)
-                                            <option @if($day->id == $listening->day_id) selected @endif value="{{ $day->id }}">{{ $day->name }}</option>
+                                            <option @if($day->id == $listening->day_id) selected
+                                                    @endif value="{{ $day->id }}">
+                                                {{ $day->module->name }} {{ $day->name }}
+                                            </option>
                                             @endforeach
                                             </select>
                                             @if($errors->has('day_id'))
@@ -58,7 +62,8 @@
                                     <div class="form-group">
                                         <label>Text</label>
                                         <label for="*" style="color:red">*</label>
-                                        <textarea id="summernote" name="text" class="{{ $errors->has('text') ? "is-invalid":"" }}">
+                                        <textarea id="summernote" name="text"
+                                                  class="{{ $errors->has('text') ? "is-invalid":"" }}">
                                             {{ old('text', $listening->text) }}
                                         </textarea>
                                         @if($errors->has('text'))

@@ -14,7 +14,9 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Day</th>
-                                    <td>@if(!empty($blog->day)){{ $blog->day->name }}@endif</td>
+                                    <td>@if(!empty($blog->day))
+                                            {{ $blog->day->module->name }} {{ $blog->day->name }}
+                                    @endif</td>
                                 </tr>
 
                                 <tr>

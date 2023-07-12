@@ -10,7 +10,11 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th>Day</th>
-                                    <td>@if(!empty($listening->day)){{ $listening->day->name }}@endif</td>
+                                    <td>
+                                        @if(!empty($listening->day))
+                                            {{ $listening->day->module->name }},{{ $listening->day->name }}
+                                        @endif
+                                    </td>
                                 </tr>
 
                                 <tr>

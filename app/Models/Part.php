@@ -22,9 +22,9 @@ class Part extends Model
     }
     public $answers = [
         '1' => 'A',
-        '2' => 'A',
-        '3' => 'A',
-        '4' => 'A',
+        '2' => 'B',
+        '3' => 'C',
+        '4' => 'D',
     ];
 
     public $st = [

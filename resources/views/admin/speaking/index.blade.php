@@ -53,7 +53,11 @@
                                 @foreach($speaking as $key => $s)
                                     <tr>
                                         <td>{{ $key+1 }}</td>
-                                        <td>@if(!empty($s->day)) {{ $s->day->name }} @endif</td>
+                                        <td>
+                                            @if(!empty($s->day))
+                                                {{ $s->day->module->name }},{{ $s->day->name }}
+                                            @endif
+                                        </td>
                                         <td>{!!  $s->theme !!}</td>
                                         <td>{!!  $s->example !!}</td>
                                         <td>
