@@ -7,6 +7,18 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use DateTimeInterface;
 
+/**
+ * @property string $phone
+ * @property string $fio
+ * @property string $name
+ * @property string $email
+ * @property string $token
+ * @property string $email_verified_at
+ * @property string $password
+ * @property string $theme
+ * @property string $remember_token
+ */
+
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -23,7 +35,9 @@ class User extends Authenticatable
         'email',
         'password',
         'theme',
-        'token'
+        'token',
+        'phone',
+        'fio',
     ];
 
     /**

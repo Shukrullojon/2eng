@@ -2,8 +2,8 @@
 
 // auth
 Route::group(['prefix' => 'auth', 'namespace' => '\App\Http\Controllers\Api'], function () {
-    Route::post('/register', 'AuthController@register');
-    Route::post('/login', 'AuthController@login');
+    Route::post('/register/phone', 'AuthController@phone');
+    Route::post('/register/code', 'AuthController@code');
 });
 
 // day

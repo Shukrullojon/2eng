@@ -6,20 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property integer $part_id
  * @property integer $user_id
- * @property integer $answer
+ * @property string $code
+ * @property integer $attemp
+ * @property string $phone_name
+ * @property integer $status
  */
 
-class PartResult extends Model
+class Otp extends Model
 {
     use HasFactory;
 
-    protected $table = 'part_results';
+    protected $table = 'otps';
 
     protected $guarded = [];
-
-    public function part(){
-        return $this->belongsTo(Part::class);
-    }
 }

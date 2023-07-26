@@ -4,6 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property string $name
+ * @property string $created_by
+ * @property string $password
+ * @property string $token_valid_period
+ * @property string $is_active
+ */
+
 class ApiUser extends Model
 {
     protected $fillable = [

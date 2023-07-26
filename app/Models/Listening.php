@@ -5,6 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property integer $day_id
+ * @property integer $text
+ * @property integer $audio
+ */
 class Listening extends Model
 {
     use HasFactory;

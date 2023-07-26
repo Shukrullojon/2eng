@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => '2ENG',
+    'site_title' => 'QADAMLAR',
 ];
