@@ -17,9 +17,10 @@ class AuthController extends Controller
     public function phone(Request $request)
     {
         $user = User::where('phone',$request->phone)->first();
+        $phone = (string)$request->phone;
         if (empty($user)){
             $user = User::create([
-                'phone' => $request->phone,
+                'phone' => $phone,
                 'token' => Str::uuid(),
             ]);
         }else{
@@ -30,7 +31,7 @@ class AuthController extends Controller
 
         $otp = OtpService::otp([
             'user_id' => $user->id,
-            'phone' => $user->phone,
+            'phone' => $phone,
         ]);
         if ($otp){
             return response()->json([
