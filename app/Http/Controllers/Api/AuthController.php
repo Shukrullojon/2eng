@@ -32,6 +32,7 @@ class AuthController extends Controller
         $otp = OtpService::otp([
             'user_id' => $user->id,
             'phone' => $phone,
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
         if ($otp){
             return response()->json([
@@ -51,7 +52,7 @@ class AuthController extends Controller
                         'uz' => "Sms yuborishda xatolik!!!",
                     ],
                 ],
-            ], 200);
+            ], 204);
         }
     }
 
@@ -87,7 +88,7 @@ class AuthController extends Controller
                             'uz' => "Kodni to'g'ri kiriting!!!",
                         ],
                     ],
-                ], 403);
+                ], 401);
             }
         }else{
             return response()->json([
@@ -95,7 +96,7 @@ class AuthController extends Controller
                 'result' => [
                     'is_return' => true,
                 ],
-            ], 401);
+            ], 204);
         }
     }
 }
