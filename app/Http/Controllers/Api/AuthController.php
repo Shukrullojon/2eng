@@ -16,6 +16,23 @@ class AuthController extends Controller
 {
     public function phone(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'phone' => 'required|min:12|max:12',
+        ]);
+        if ($validator->fails()) {
+            $errorPhone = $validator->errors()->get('phone');
+            return response()->json([
+                'status' => false,
+                'result' => [
+                    'message' => [
+                        'uz' => $errorPhone[0],
+                        'ru' => $errorPhone[0],
+                        'en' => $errorPhone[0],
+                    ],
+                ],
+            ], 203);
+        }
+
         $user = User::where('phone',$request->phone)->first();
         $phone = (string)$request->phone;
         if (empty($user)){
@@ -41,6 +58,8 @@ class AuthController extends Controller
                     'token' => $user->token,
                     'message' => [
                         'uz' => "Tasdiqlash kodini kiriting!!!",
+                        'ru' => "Tasdiqlash kodini kiriting!!!",
+                        'en' => "Tasdiqlash kodini kiriting!!!",
                     ],
                 ],
             ], 200);
@@ -50,17 +69,34 @@ class AuthController extends Controller
                 'result' => [
                     'message' => [
                         'uz' => "Sms yuborishda xatolik!!!",
+                        'ru' => "Sms yuborishda xatolik!!!",
+                        'en' => "Sms yuborishda xatolik!!!",
                     ],
                 ],
-            ], 204);
+            ], 203);
         }
     }
 
     public function code(Request $request){
-        $validator = Validator::make($request->only('token'), [
-            'token' => ['required', 'string', 'exists:users,token'],
-            'code' => ['required', 'string'],
+        $validator = Validator::make($request->all(), [
+            'code' => 'required|min:5|max:5',
+            'token' => 'required|exists:users,token'
         ]);
+        if ($validator->fails()) {
+            $errorCode = $validator->errors()->get('code');
+            $errorToken = $validator->errors()->get('token');
+            return response()->json([
+                'status' => false,
+                'result' => [
+                    'message' => [
+                        'uz' => (isset($errorCode[0])) ? $errorCode[0] : $errorToken[0],
+                        'ru' => (isset($errorCode[0])) ? $errorCode[0] : $errorToken[0],
+                        'en' => (isset($errorCode[0])) ? $errorCode[0] : $errorToken[0],
+                    ],
+                ],
+            ], 203);
+        }
+
         $user = User::where('token',$request->token)->first();
         $otp = Otp::where('user_id',$user->id)
             ->where('status',0)
@@ -75,7 +111,6 @@ class AuthController extends Controller
                 ]);
                 return response()->json([
                     'status' => true,
-                    'result' => null,
                 ], 200);
             }else{
                 $otp->update([
@@ -86,9 +121,11 @@ class AuthController extends Controller
                     'result' => [
                         'message' => [
                             'uz' => "Kodni to'g'ri kiriting!!!",
+                            'ru' => "Kodni to'g'ri kiriting!!!",
+                            'en' => "Kodni to'g'ri kiriting!!!",
                         ],
                     ],
-                ], 401);
+                ], 203);
             }
         }else{
             return response()->json([
@@ -96,7 +133,7 @@ class AuthController extends Controller
                 'result' => [
                     'is_return' => true,
                 ],
-            ], 204);
+            ], 203);
         }
     }
 }

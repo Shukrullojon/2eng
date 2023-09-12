@@ -80,7 +80,6 @@
                                             </form>
                                         </td>
                                     </tr>
-                                </tbody>
                                 @endforeach
                                 </tbody>
                                 <tfooter>
