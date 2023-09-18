@@ -79,7 +79,7 @@ class AuthController extends Controller
 
     public function code(Request $request){
         $validator = Validator::make($request->all(), [
-            'code' => 'required|min:5|max:5',
+            'code' => 'required|integer|min:10000|max:99999',
             'token' => 'required|exists:users,token'
         ]);
         if ($validator->fails()) {
