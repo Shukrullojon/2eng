@@ -68,7 +68,7 @@
                                         <td>
                                             <form action="{{ route("grammerDelete", $grammer->id) }}" method="post">
                                                 @csrf
-                                                <div class="btn-group ">
+                                                <div class="btn-group">
                                                     <a href="{{ route('grammerShow',$grammer->id) }}"
                                                        class="btn btn-info btn-sm">
                                                         <span class="fa fa-eye"></span>

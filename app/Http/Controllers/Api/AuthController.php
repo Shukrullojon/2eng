@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function phone(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'phone' => 'required|min:12|max:12',
+            'phone' => 'required|min:9|max:9',
         ]);
         if ($validator->fails()) {
             $errorPhone = $validator->errors()->get('phone');

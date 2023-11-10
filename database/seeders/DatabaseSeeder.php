@@ -13,7 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([
-        ]);
+        $this->call(UserSeeder::class);
+        $this->call(ModuleSeeder::class);
+        $this->call(DaySeeder::class);
+        $this->call(VocabularySeeder::class);
+        $this->call(UserPointSeeder::class);
     }
 }
